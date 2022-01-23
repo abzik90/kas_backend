@@ -3,7 +3,10 @@ require_once("../includes/config.php");
 require_once("../includes/dbconnect.php");
 require_once("../classes/questionnaire.php");
 
-header('Content-type: application/json');
+//header('Content-type: application/json');
+header("Access-Control-Allow-Headers: Authorization, Content-Type");
+header("Access-Control-Allow-Origin: *");
+header('content-type: application/json; charset=utf-8');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $aid=$_POST['aid']; //address id/property id
