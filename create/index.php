@@ -4,9 +4,10 @@ require_once("../includes/dbconnect.php");
 require_once("../classes/questionnaire.php");
 
 //header('Content-type: application/json');
+
+header('content-type: application/json; charset=utf-8');
 header("Access-Control-Allow-Headers: Authorization, Content-Type");
 header("Access-Control-Allow-Origin: *");
-header('content-type: application/json; charset=utf-8');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $surname=$_POST['surname'];
@@ -31,13 +32,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $additional=$_POST['additional'];
 
   $questionnaire=new Questionnaire($surname,$name,$midname,$iin,$city,$street,$homeNum,$flatNum,$cadastral,$area,$datePublished);
+  print_r($questionnaire);
   if($questionnaire->isNotEmpty()){
     $mysqli->query("INSERT INTO people (surname,name,midname,iin,`date`)VALUES('".$surname."','".$name."','".$midname."','".$iin."','".$config['dateUnix']."')");
     $personId=$mysqli->insert_id;
     // echo $personId;
-
-    $boo=$mysqli->query("INSERT INTO addresses(owner_id,city,street,home_num,flat_num,cadastral,area,latitude,longitude,`date`)VALUES('".$personId."','".$city."','".$street."','".$homeNum."','".$flatNum."','".$cadastral."','".$area."','".$latitudeArr."','".$longitudeArr."','".$config[dateUnix]."')");
-    echo "boo is:".$boo;
+    echo "{'success':'true'}";
+    $mysqli->query("INSERT INTO addresses(owner_id,city,street,home_num,flat_num,cadastral,area,latitude,longitude,`date`)VALUES('".$personId."','".$city."','".$street."','".$homeNum."','".$flatNum."','".$cadastral."','".$area."','".$latitudeArr."','".$longitudeArr."','".$config[dateUnix]."')");
     echo "INSERT INTO addresses(owner_id,city,street,home_num,flat_num,cadastral,area,latitude,longitude,`date`)VALUES(".$personId.",'".$city."','".$street."','".$homeNum."',".$flatNum.",'".$cadastral."',".$area.",'".$latitudeArr."','".$longitudeArr."','".$config[dateUnix]."')";
   }else{
     print_r($questionnaire);

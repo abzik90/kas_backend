@@ -3,6 +3,7 @@ require_once("../includes/config.php");
 require_once("../includes/dbconnect.php");
 require_once("../classes/questionnaire.php");
 
+// error_reporting(E_ALL); ini_set('display_errors', '1');
 //header('Content-type: application/json');
 header("Access-Control-Allow-Headers: Authorization, Content-Type");
 header("Access-Control-Allow-Origin: *");
@@ -16,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
      while($questionnaireRow=$questionnaireQuery->fetch_assoc()){
        //$surname="",$name="",$midname="",$iin="",$city="",$street="",$homeNum="",$flatNum="",$cadastral="",$area="",$additional=""
-       $questionnaireArr[$j]=new Questionnaire($questionnaireRow['surname'],$questionnaireRow['name'],$questionnaireRow['midname'],$questionnaireRow['iin'],$questionnaireRow['city'],$questionnaireRow['street'],$questionnaireRow['home_num'],$questionnaireRow['flat_num'],$questionnaireRow['cadastral'],$questionnaireRow['area'],$questionnaireRow['date'],$questionnaireRow['additional'],$questionnaireRow['aid']);
+       $questionnaireArr[$j]=new Questionnaire($questionnaireRow['surname'],$questionnaireRow['name'],$questionnaireRow['midname'],$questionnaireRow['iin'],$questionnaireRow['city'],$questionnaireRow['street'],$questionnaireRow['home_num'],$questionnaireRow['flat_num'],$questionnaireRow['cadastral'],$questionnaireRow['area'],$questionnaireRow['date'],$questionnaireRow['latitude'],$questionnaireRow['longitude'],$questionnaireRow['additional'],$questionnaireRow['aid']);
        $j++;
      }
      echo json_encode($questionnaireArr);
@@ -30,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
    if($questionnaireQuery->num_rows==true){
      while($questionnaireRow=$questionnaireQuery->fetch_assoc()){
        //$surname="",$name="",$midname="",$iin="",$city="",$street="",$homeNum="",$flatNum="",$cadastral="",$area="",$additional=""
-       $questionnaire=new Questionnaire($questionnaireRow['surname'],$questionnaireRow['name'],$questionnaireRow['midname'],$questionnaireRow['iin'],$questionnaireRow['city'],$questionnaireRow['street'],$questionnaireRow['home_num'],$questionnaireRow['flat_num'],$questionnaireRow['cadastral'],$questionnaireRow['area'],$questionnaireRow['date'],$questionnaireRow['additional'],$questionnaireRow['aid']);
+       $questionnaire=new Questionnaire($questionnaireRow['surname'],$questionnaireRow['name'],$questionnaireRow['midname'],$questionnaireRow['iin'],$questionnaireRow['city'],$questionnaireRow['street'],$questionnaireRow['home_num'],$questionnaireRow['flat_num'],$questionnaireRow['cadastral'],$questionnaireRow['area'],$questionnaireRow['date'],$questionnaireRow['latitude'],$questionnaireRow['longitude'],$questionnaireRow['additional'],$questionnaireRow['aid']);
      }
      echo json_encode($questionnaire);
    }

@@ -11,7 +11,7 @@
   <input type='button' value='Delete' id='delete'>
 </body>
 <script>
-var dataToSend={
+var dataToSend2={
   "surname":"Testov",
   "name":"Test",
   "midname":"Testovich",
@@ -26,6 +26,36 @@ var dataToSend={
   "longitude":['43.79555','43.79557','43.79555','43.79557'],
   "additional":"Some additional info"
 }
+var dataToSend3={
+  "surname": "Tsoy",
+  "name": "Maxim",
+  "midname": "",
+  "iin": "011121600900",
+  "city": "Nursultan",
+  "street": "Kabanbay batyr ave",
+  "homeNum": "53/24",
+  "flatNum": "806",
+  "cadastral": "45465656598989898",
+  "area": "30",
+  "latitude":["78.79555","78.79557","78.79555","78.79557"],
+  "longitude":["43.79555","43.79557","43.79555","43.79557"],
+  "additional":"No additional info"
+}
+var dataToSend={
+  "surname":"Bizhigit",
+  "name":"Nurbol",
+  "midname":"",
+  "iin":"010101200500",
+  "city":"Nur-Sultan (Astana)",
+  "street":"Máńgilik El dańǵyly",
+  "homeNum":"С4/6",
+  "flatNum":"",
+  "cadastral":"454545454545",
+  "area":"1.4531",
+  "datePublished":"2022-01-24",
+  "additional":"lorem ipsum",
+  "latitude":[51.08870296580983,51.086946144162305,51.0880948428312,51.088844860014895],
+  "longitude":[71.41216501339377,71.4148579512447,71.41512617214623,71.41396745785175]};
 console.log(dataToSend);
 $(document).ready(function(){
   $("#add").on('click',function(){
